@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            property="og:image"
+            content="https://firebasestorage.googleapis.com/v0/b/acodebytes.appspot.com/o/SBMC-55.png?alt=media&token=0f7e11cb-0298-4a08-88f6-66d1f4b9c00d"
+        />
+        <link rel="shortcut icon" href="assets/favicon.png" type="image/*" />
+        <title>Student Planner for SBMC 55</title>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+        />
+    </head>
+
+    <body>
+        <div class="container mb-5">
+            <h2 class="text-center mt-5 mb-3">Student Planner for SBMC 55</h2>
+            <form class="main_form">
+                <div class="mb-3 mt-3">
+                    <label for="exampleInputEmail1" class="form-label fs-4"
+                        ><b>Your Roll</b></label
+                    >
+                    <input
+                        type="number"
+                        value="1"
+                        min="1"
+                        max="250"
+                        class="form-control"
+                        id="user_roll"
+                        required
+                    />
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <b>Submit</b>
+                </button>
+            </form>
+        </div>
+
+        <div class="main_info_div container mt-5 mb-5"></div>
+
+        <div class="container-fluid mt-5 mb-5 routine_table"></div>
+
+        <script>
+            const firebaseConfig = {
+                apiKey: "AIzaSyCITNK0erTdDpOWo-inlYLCFftT3vsqeVs",
+                authDomain: "sbmc-55.firebaseapp.com",
+                projectId: "sbmc-55",
+                storageBucket: "sbmc-55.appspot.com",
+                messagingSenderId: "481399824722",
+                appId: "1:481399824722:web:dbd19ee076eade7d101a8b",
+            };
+            firebase.initializeApp(firebaseConfig);
+
+            const db = firebase.firestore();
+        </script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+        ></script>
+        <script src="main.js"></script>
+    </body>
+</html>
