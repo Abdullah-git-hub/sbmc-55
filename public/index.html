@@ -12,6 +12,7 @@
         <title>Student Planner for SBMC 55</title>
         <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -63,11 +64,39 @@
                             <a class="nav-link" href="./notes/">Notes</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-primary" type="submit">
+                    <div class="d-flex">
+                        <button
+                            class="btn btn-outline-primary loginBtn"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#login_modal"
+                        >
                             Login
                         </button>
-                    </form>
+                        <button
+                            class="btn btn-outline-primary ms-2 SignupBtn"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#signup_modal"
+                        >
+                            Signup
+                        </button>
+                        <button
+                            class="btn btn-outline-primary ms-2 uploadBtn"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#upload_modal"
+                        >
+                            Upload
+                        </button>
+                        <button
+                            class="btn btn-outline-primary logoutBtn ms-2"
+                            type="button"
+                            onclick="auth.signOut()"
+                        >
+                            Log Out
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -75,6 +104,7 @@
             <h2 class="text-center mt-3 mb-3">
                 <u>Student Planner for SBMC 55</u>
             </h2>
+            <div id="alertBox"></div>
             <form class="main_form">
                 <div class="mb-3 mt-3">
                     <label for="exampleInputEmail1" class="form-label fs-4"
@@ -100,6 +130,283 @@
 
         <div class="container-fluid mt-5 mb-5 routine_table"></div>
 
+        <!-- Login Modal -->
+        <div
+            class="modal fade"
+            id="login_modal"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="user_login_form">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Login</h5>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="user_login_mail" class="form-label"
+                                    >Email address</label
+                                >
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="user_login_mail"
+                                    aria-describedby="emailHelp"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="user_login_pass" class="form-label"
+                                    >Password</label
+                                >
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="user_login_pass"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                id="user_login_btn"
+                            >
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Account Modal -->
+        <div
+            class="modal fade"
+            id="signup_modal"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="user_signup_form">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Create Account
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="user_signup_name" class="form-label"
+                                    >Your name</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="user_signup_name"
+                                    aria-describedby="emailHelp"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="user_signup_roll" class="form-label"
+                                    >Your Roll</label
+                                >
+                                <input
+                                    type="number"
+                                    min="1"
+                                    class="form-control"
+                                    id="user_signup_roll"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label
+                                    for="user_signup_email"
+                                    class="form-label"
+                                    >Email address</label
+                                >
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="user_signup_email"
+                                    aria-describedby="emailHelp"
+                                    required
+                                />
+                                <div id="emailHelp" class="form-text">
+                                    We'll never share your email with anyone
+                                    else.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="user_signup_pass" class="form-label"
+                                    >Password</label
+                                >
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="user_signup_pass"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                id="user_signup_btn"
+                            >
+                                Signup
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Modal -->
+        <div
+            class="modal fade"
+            id="upload_modal"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="user_upload_form">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Upload a note
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="user_signup_name" class="form-label"
+                                    >Topic name</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="user_upload_topic"
+                                    aria-describedby="emailHelp"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="user_signup_roll" class="form-label"
+                                    >Subject</label
+                                >
+                                <select
+                                    class="form-select"
+                                    id="user_upload_subject"
+                                >
+                                    <option value="Anatomy">Anatomy</option>
+                                    <option value="Physiology">
+                                        Physiology
+                                    </option>
+                                    <option value="Biochemistry">
+                                        Biochemistry
+                                    </option>
+                                    <option value="Special">Special</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label
+                                    for="user_upload_group"
+                                    class="form-label"
+                                    >Group</label
+                                >
+                                <select
+                                    class="form-select"
+                                    id="user_upload_group"
+                                >
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="Common">
+                                        Common to all
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="user_upload_link" class="form-label"
+                                    >File Link</label
+                                >
+                                <input
+                                    type="url"
+                                    class="form-control"
+                                    id="user_upload_link"
+                                    placeholder="Google Drive Link"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                id="user_upload_btn"
+                            >
+                                Upload
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <script>
             const firebaseConfig = {
                 apiKey: "AIzaSyCITNK0erTdDpOWo-inlYLCFftT3vsqeVs",
@@ -112,6 +419,7 @@
             firebase.initializeApp(firebaseConfig);
 
             const db = firebase.firestore();
+            const auth = firebase.auth();
         </script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

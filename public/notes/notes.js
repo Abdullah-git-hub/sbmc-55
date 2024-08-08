@@ -214,6 +214,7 @@ function generateDom(data) {
 }
 
 function showEmailVerif(email) {
+    auth.signOut();
     document.querySelector(
         "#alertBox"
     ).innerHTML = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
