@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            property="og:image"
+            content="https://firebasestorage.googleapis.com/v0/b/acodebytes.appspot.com/o/SBMC-55.png?alt=media&token=0f7e11cb-0298-4a08-88f6-66d1f4b9c00d"
+        />
+        <link rel="shortcut icon" href="../assets/favicon.png" type="image/*" />
+        <title>Note Management for SBMC 55</title>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+        />
+    </head>
+
+    <body>
+        <nav
+            class="navbar sticky-top navbar-expand-lg navbar-light bg-light p-2 border-bottom shadow-sm"
+        >
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img
+                        src="../assets/navicon.png"
+                        width="50"
+                        height="50"
+                        class="d-inline-block me-2"
+                    />
+                    <b class="me-2">SBMC-55</b>
+                </a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                    class="collapse navbar-collapse"
+                    id="navbarSupportedContent"
+                    style="margin-left: auto"
+                >
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                aria-current="page"
+                                href="../index.html"
+                                >Routine</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Notes</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-primary" type="submit">
+                            Login
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="container mb-5">
+            <h2 class="text-center mt-3 mb-5">
+                <u>Note Management - SBMC 55</u>
+            </h2>
+            <form class="main_form row">
+                <div class="col-sm-5 mb-3">
+                    <label for="date" class="form-label fs-5"
+                        ><b>Date</b></label
+                    >
+                    <input
+                        type="date"
+                        class="form-control"
+                        id="date"
+                        required
+                    />
+                </div>
+                <div class="col-7 col-sm-4 mb-3">
+                    <label for="subject" class="form-label fs-5"
+                        ><b>Subject</b></label
+                    >
+                    <select class="form-select">
+                        <option selected value="Anatomy">Anatomy</option>
+                        <option value="Physiology">Physiology</option>
+                        <option value="Biochemistry">Biochemistry</option>
+                        <option value="Special">Special</option>
+                    </select>
+                </div>
+                <div class="col-5 col-sm-3 mb-3">
+                    <label for="batch" class="form-label fs-5"
+                        ><b>Batch</b></label
+                    >
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="batch"
+                        placeholder="According to subject"
+                        required
+                    />
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">
+                        <b>Submit</b>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="main_note_div container mt-5 mb-5">
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="card main_note_box mt-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Topic name</h5>
+                            <p class="card-text">
+                                <small><i>by,</i></small> <br />
+                                Abdullah Al Arafat <br />
+                                Roll: 16
+                            </p>
+                            <a
+                                href="https://m.me/j/AbbN5R2pqAcqvPRm"
+                                class="btn btn-primary btn-sm stretched-link"
+                                target="_blank"
+                                >Get File &#x2B67;</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card main_note_box mt-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Topic name</h5>
+                            <p class="card-text">
+                                <small><i>by,</i></small> <br />
+                                Abdullah Al Arafat <br />
+                                Roll: 16
+                            </p>
+                            <a
+                                href="https://m.me/j/AbbN5R2pqAcqvPRm"
+                                class="btn btn-primary btn-sm stretched-link"
+                                target="_blank"
+                                >Get File &#x2B67;</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card main_note_box mt-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Topic name</h5>
+                            <p class="card-text">
+                                <small><i>by,</i></small> <br />
+                                Abdullah Al Arafat <br />
+                                Roll: 16
+                            </p>
+                            <a
+                                href="https://m.me/j/AbbN5R2pqAcqvPRm"
+                                class="btn btn-primary btn-sm stretched-link"
+                                target="_blank"
+                                >Get File &#x2B67;</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card main_note_box mt-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Topic name</h5>
+                            <p class="card-text">
+                                <small><i>by,</i></small> <br />
+                                Abdullah Al Arafat <br />
+                                Roll: 16
+                            </p>
+                            <a
+                                href="https://m.me/j/AbbN5R2pqAcqvPRm"
+                                class="btn btn-primary btn-sm stretched-link"
+                                target="_blank"
+                                >Get File &#x2B67;</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card main_note_box mt-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Topic name</h5>
+                            <p class="card-text">
+                                <small><i>by,</i></small> <br />
+                                Abdullah Al Arafat <br />
+                                Roll: 16
+                            </p>
+                            <a
+                                href="https://m.me/j/AbbN5R2pqAcqvPRm"
+                                class="btn btn-primary btn-sm stretched-link"
+                                target="_blank"
+                                >Get File &#x2B67;</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const firebaseConfig = {
+                apiKey: "AIzaSyCITNK0erTdDpOWo-inlYLCFftT3vsqeVs",
+                authDomain: "sbmc-55.firebaseapp.com",
+                projectId: "sbmc-55",
+                storageBucket: "sbmc-55.appspot.com",
+                messagingSenderId: "481399824722",
+                appId: "1:481399824722:web:dbd19ee076eade7d101a8b",
+            };
+
+            firebase.initializeApp(firebaseConfig);
+
+            const db = firebase.firestore();
+            const auth = firebase.auth();
+        </script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+        ></script>
+        <script src="notes.js"></script>
+    </body>
+</html>

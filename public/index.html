@@ -21,8 +21,60 @@
     </head>
 
     <body>
+        <nav
+            class="navbar sticky-top navbar-expand-lg navbar-light bg-light p-2 border-bottom shadow-sm"
+        >
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img
+                        src="assets/navicon.png"
+                        width="50"
+                        height="50"
+                        class="d-inline-block me-2"
+                    />
+                    <b class="me-2">SBMC-55</b>
+                </a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                    class="collapse navbar-collapse"
+                    id="navbarSupportedContent"
+                    style="margin-left: auto"
+                >
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="#"
+                                >Routine</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./notes/">Notes</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-primary" type="submit">
+                            Login
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
         <div class="container mb-5">
-            <h2 class="text-center mt-5 mb-3">Student Planner for SBMC 55</h2>
+            <h2 class="text-center mt-3 mb-3">
+                <u>Student Planner for SBMC 55</u>
+            </h2>
             <form class="main_form">
                 <div class="mb-3 mt-3">
                     <label for="exampleInputEmail1" class="form-label fs-4"
