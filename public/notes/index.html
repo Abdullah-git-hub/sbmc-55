@@ -64,11 +64,31 @@
                             <a class="nav-link active" href="#">Notes</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-primary" type="submit">
+                    <div class="d-flex">
+                        <button
+                            class="btn btn-outline-primary"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#login_modal"
+                        >
                             Login
                         </button>
-                    </form>
+                        <button
+                            class="btn btn-outline-primary ms-2"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#signup_modal"
+                        >
+                            Signup
+                        </button>
+                        <button
+                            class="btn btn-outline-primary"
+                            type="button"
+                            style="display: none"
+                        >
+                            Log Out
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -210,6 +230,166 @@
                             >
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Modal -->
+        <div
+            class="modal fade"
+            id="login_modal"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Login
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="user_login_mail" class="form-label"
+                                    >Email address</label
+                                >
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="user_login_mail"
+                                    aria-describedby="emailHelp"
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="user_login_pass" class="form-label"
+                                    >Password</label
+                                >
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="user_login_pass"
+                                />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Account Modal -->
+        <div
+            class="modal fade"
+            id="signup_modal"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="user_signup_form">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Create Account
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="user_signup_name" class="form-label"
+                                    >Your name</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="user_signup_name"
+                                    aria-describedby="emailHelp"
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="user_signup_roll" class="form-label"
+                                    >Your Roll</label
+                                >
+                                <input
+                                    type="number"
+                                    min="1"
+                                    class="form-control"
+                                    id="user_signup_roll"
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label
+                                    for="user_signup_email"
+                                    class="form-label"
+                                    >Email address</label
+                                >
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="user_signup_email"
+                                    aria-describedby="emailHelp"
+                                />
+                                <div id="emailHelp" class="form-text">
+                                    We'll never share your email with anyone
+                                    else.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="user_signup_pass" class="form-label"
+                                    >Password</label
+                                >
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="user_signup_pass"
+                                />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                id="user_signup_btn"
+                            >
+                                Signup
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
