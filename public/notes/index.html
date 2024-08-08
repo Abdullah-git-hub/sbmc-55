@@ -66,7 +66,7 @@
                     </ul>
                     <div class="d-flex">
                         <button
-                            class="btn btn-outline-primary"
+                            class="btn btn-outline-primary loginBtn"
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#login_modal"
@@ -74,7 +74,7 @@
                             Login
                         </button>
                         <button
-                            class="btn btn-outline-primary ms-2"
+                            class="btn btn-outline-primary ms-2 SignupBtn"
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#signup_modal"
@@ -82,9 +82,17 @@
                             Signup
                         </button>
                         <button
-                            class="btn btn-outline-primary"
+                            class="btn btn-outline-primary ms-2 uploadBtn"
                             type="button"
-                            style="display: none"
+                            data-bs-toggle="modal"
+                            data-bs-target="#upload_modal"
+                        >
+                            Upload
+                        </button>
+                        <button
+                            class="btn btn-outline-primary logoutBtn ms-2"
+                            type="button"
+                            onclick="auth.signOut()"
                         >
                             Log Out
                         </button>
@@ -96,7 +104,10 @@
             <h2 class="text-center mt-3 mb-5">
                 <u>Note Management - SBMC 55</u>
             </h2>
-            <form class="main_form row">
+
+            <div id="alertBox"></div>
+
+            <form class="main_form row" id="search_form">
                 <div class="col-sm-5 mb-3">
                     <label for="date" class="form-label fs-5"
                         ><b>Date</b></label
@@ -109,10 +120,10 @@
                     />
                 </div>
                 <div class="col-7 col-sm-4 mb-3">
-                    <label for="subject" class="form-label fs-5"
+                    <label for="search_subject" class="form-label fs-5"
                         ><b>Subject</b></label
                     >
-                    <select class="form-select">
+                    <select class="form-select" id="search_subject">
                         <option selected value="Anatomy">Anatomy</option>
                         <option value="Physiology">Physiology</option>
                         <option value="Biochemistry">Biochemistry</option>
@@ -120,118 +131,28 @@
                     </select>
                 </div>
                 <div class="col-5 col-sm-3 mb-3">
-                    <label for="batch" class="form-label fs-5"
-                        ><b>Batch</b></label
+                    <label for="group" class="form-label fs-5"
+                        ><b>Group</b></label
                     >
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="batch"
-                        placeholder="According to subject"
-                        required
-                    />
+                    <select class="form-select" id="group">
+                        <option selected value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="Common">Common to all</option>
+                    </select>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary">
-                        <b>Submit</b>
+                        <b>Search</b>
                     </button>
                 </div>
             </form>
         </div>
 
-        <div class="main_note_div container mt-5 mb-5">
-            <div class="row">
-                <div class="col-sm-6 col-md-4">
-                    <div class="card main_note_box mt-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Topic name</h5>
-                            <p class="card-text">
-                                <small><i>by,</i></small> <br />
-                                Abdullah Al Arafat <br />
-                                Roll: 16
-                            </p>
-                            <a
-                                href="https://m.me/j/AbbN5R2pqAcqvPRm"
-                                class="btn btn-primary btn-sm stretched-link"
-                                target="_blank"
-                                >Get File &#x2B67;</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="card main_note_box mt-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Topic name</h5>
-                            <p class="card-text">
-                                <small><i>by,</i></small> <br />
-                                Abdullah Al Arafat <br />
-                                Roll: 16
-                            </p>
-                            <a
-                                href="https://m.me/j/AbbN5R2pqAcqvPRm"
-                                class="btn btn-primary btn-sm stretched-link"
-                                target="_blank"
-                                >Get File &#x2B67;</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="card main_note_box mt-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Topic name</h5>
-                            <p class="card-text">
-                                <small><i>by,</i></small> <br />
-                                Abdullah Al Arafat <br />
-                                Roll: 16
-                            </p>
-                            <a
-                                href="https://m.me/j/AbbN5R2pqAcqvPRm"
-                                class="btn btn-primary btn-sm stretched-link"
-                                target="_blank"
-                                >Get File &#x2B67;</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="card main_note_box mt-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Topic name</h5>
-                            <p class="card-text">
-                                <small><i>by,</i></small> <br />
-                                Abdullah Al Arafat <br />
-                                Roll: 16
-                            </p>
-                            <a
-                                href="https://m.me/j/AbbN5R2pqAcqvPRm"
-                                class="btn btn-primary btn-sm stretched-link"
-                                target="_blank"
-                                >Get File &#x2B67;</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="card main_note_box mt-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Topic name</h5>
-                            <p class="card-text">
-                                <small><i>by,</i></small> <br />
-                                Abdullah Al Arafat <br />
-                                Roll: 16
-                            </p>
-                            <a
-                                href="https://m.me/j/AbbN5R2pqAcqvPRm"
-                                class="btn btn-primary btn-sm stretched-link"
-                                target="_blank"
-                                >Get File &#x2B67;</a
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="container mt-5 mb-5">
+            <div class="row main_note_div"></div>
         </div>
 
         <!-- Login Modal -->
@@ -246,11 +167,9 @@
         >
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form>
+                    <form id="user_login_form">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                Login
-                            </h5>
+                            <h5 class="modal-title">Login</h5>
                             <button
                                 type="button"
                                 class="btn-close"
@@ -268,6 +187,7 @@
                                     class="form-control"
                                     id="user_login_mail"
                                     aria-describedby="emailHelp"
+                                    required
                                 />
                             </div>
                             <div class="mb-3">
@@ -278,6 +198,7 @@
                                     type="password"
                                     class="form-control"
                                     id="user_login_pass"
+                                    required
                                 />
                             </div>
                         </div>
@@ -289,7 +210,11 @@
                             >
                                 Close
                             </button>
-                            <button type="submit" class="btn btn-primary">
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                id="user_login_btn"
+                            >
                                 Login
                             </button>
                         </div>
@@ -332,6 +257,7 @@
                                     class="form-control"
                                     id="user_signup_name"
                                     aria-describedby="emailHelp"
+                                    required
                                 />
                             </div>
                             <div class="mb-3">
@@ -343,6 +269,7 @@
                                     min="1"
                                     class="form-control"
                                     id="user_signup_roll"
+                                    required
                                 />
                             </div>
                             <div class="mb-3">
@@ -356,6 +283,7 @@
                                     class="form-control"
                                     id="user_signup_email"
                                     aria-describedby="emailHelp"
+                                    required
                                 />
                                 <div id="emailHelp" class="form-text">
                                     We'll never share your email with anyone
@@ -370,6 +298,7 @@
                                     type="password"
                                     class="form-control"
                                     id="user_signup_pass"
+                                    required
                                 />
                             </div>
                         </div>
@@ -387,6 +316,115 @@
                                 id="user_signup_btn"
                             >
                                 Signup
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Modal -->
+        <div
+            class="modal fade"
+            id="upload_modal"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="user_upload_form">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Upload a note
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="user_signup_name" class="form-label"
+                                    >Topic name</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="user_upload_topic"
+                                    aria-describedby="emailHelp"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="user_signup_roll" class="form-label"
+                                    >Subject</label
+                                >
+                                <select
+                                    class="form-select"
+                                    id="user_upload_subject"
+                                >
+                                    <option value="Anatomy">Anatomy</option>
+                                    <option value="Physiology">
+                                        Physiology
+                                    </option>
+                                    <option value="Biochemistry">
+                                        Biochemistry
+                                    </option>
+                                    <option value="Special">Special</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label
+                                    for="user_upload_group"
+                                    class="form-label"
+                                    >Group</label
+                                >
+                                <select
+                                    class="form-select"
+                                    id="user_upload_group"
+                                >
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="Common">
+                                        Common to all
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="user_upload_link" class="form-label"
+                                    >File Link</label
+                                >
+                                <input
+                                    type="url"
+                                    class="form-control"
+                                    id="user_upload_link"
+                                    placeholder="Google Drive Link"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                id="user_upload_btn"
+                            >
+                                Upload
                             </button>
                         </div>
                     </form>
