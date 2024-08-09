@@ -324,7 +324,20 @@
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="user_signup_name" class="form-label"
+                                <label for="user_upload_time" class="form-label"
+                                    >Date</label
+                                >
+                                <input
+                                    type="date"
+                                    class="form-control"
+                                    id="user_upload_time"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label
+                                    for="user_upload_topic"
+                                    class="form-label"
                                     >Topic name</label
                                 >
                                 <input
@@ -336,7 +349,9 @@
                                 />
                             </div>
                             <div class="mb-3">
-                                <label for="user_signup_roll" class="form-label"
+                                <label
+                                    for="user_upload_subject"
+                                    class="form-label"
                                     >Subject</label
                                 >
                                 <select
@@ -426,6 +441,7 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"
         ></script>
+        <script src="auth_notes.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
